@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg width="297mm" height="210mm" viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .outline { fill: #FFF; stroke: #000; stroke-width: 5; }
+            .wall { stroke: #000; stroke-width: 5; }
+            .wal { stroke: red; stroke-width: 5; }
+            .stair-step { stroke: #000; stroke-width: 2; fill: none; }
+            .arrow { fill: #000; stroke: #000; stroke-width: 2; }
+            .doors {fill: #FFF; stroke: #FFF; stroke-width: 8;}
+            .doors-blue {fill: blue; stroke: blue; stroke-width: 8;}
+        </style>
+    </defs>
+    
+    <!-- ========== Під'їзд 2 (П2) ========== -->
+    <g transform="translate(50, 50)">
+        <!-- Зовнішній контур П2 -->
+        <polygon points="
+            400,0
+            920,0
+            920,300
+            770,300
+            770,400
+            620,400
+            620,130
+            520,130
+            520,400
+            442,400
+            442,130
+            400,130
+        " class="outline" />
+        
+        <!-- Внутрішні стіни П2 -->
+        <!-- Вертикальна стіна між коридором і центральним виходом -->
+        <line x1="400" y1="0" x2="400" y2="40" class="wall" />
+        <line x1="400" y1="90" x2="400" y2="130" class="wall" />
+        
+        <!-- Горизонтальна стіна верхня техзони -->
+        <line x1="483" y1="180" x2="490" y2="180" class="wall" />
+        <line x1="510" y1="180" x2="520" y2="180" class="wall" />
+        
+        <!-- Горизонтальна стіна нижня техзони -->
+        <line x1="440" y1="340" x2="450" y2="340" class="wall" />
+        <line x1="480" y1="340" x2="520" y2="340" class="wall" />
+        
+        <!-- Вертикальна стіна між сходами і техприміщенням -->
+        <line x1="485" y1="180" x2="485" y2="340" class="wall" />
+        
+        <!-- Вертикальна стіна між виходом і коридором 4 -->
+        <line x1="520" y1="0" x2="520" y2="40" class="wall" />
+        <line x1="520" y1="90" x2="520" y2="130" class="wall" />
+        
+        <!-- Вертикальна стіна між виходом і кімнатою 7 -->
+        <line x1="520" y1="130" x2="520" y2="400" class="wall" />
+        
+        <!-- Вертикальна стіна між кімнатою 7 і кімнатою 8 -->
+        <line x1="770" y1="0" x2="770" y2="150" class="wall" />
+        <line x1="770" y1="190" x2="770" y2="300" class="wall" />
+        
+        <!-- Вертикальна стіна між коридором 4 і виходом -->
+        <line x1="590" y1="0" x2="590" y2="40" class="wall" />
+        <line x1="590" y1="90" x2="590" y2="130" class="wall" />
+        
+        <!-- Горизонтальна стіна між коридором 4 і кімнатою 7 -->
+        <line x1="620" y1="130" x2="640" y2="130" class="wall" />
+        <line x1="700" y1="130" x2="770" y2="130" class="wall" />
+        
+        <!-- Сходи П2 -->
+        <line x1="440" y1="190" x2="485" y2="190" class="stair-step" />
+        <line x1="440" y1="200" x2="485" y2="200" class="stair-step" />
+        <line x1="440" y1="210" x2="485" y2="210" class="stair-step" />
+        <line x1="440" y1="220" x2="485" y2="220" class="stair-step" />
+        <line x1="440" y1="230" x2="485" y2="230" class="stair-step" />
+        <line x1="440" y1="240" x2="485" y2="240" class="stair-step" />
+        <line x1="440" y1="250" x2="485" y2="250" class="stair-step" />
+        <line x1="440" y1="260" x2="485" y2="260" class="stair-step" />
+        <line x1="440" y1="270" x2="485" y2="270" class="stair-step" />
+        <line x1="440" y1="280" x2="485" y2="280" class="stair-step" />
+        <line x1="440" y1="290" x2="485" y2="290" class="stair-step" />
+        <line x1="440" y1="300" x2="485" y2="300" class="stair-step" />
+        <line x1="440" y1="310" x2="485" y2="310" class="stair-step" />
+        <line x1="440" y1="320" x2="485" y2="320" class="stair-step" />
+        <line x1="440" y1="330" x2="485" y2="330" class="stair-step" />
+        
+        <!-- Стрілка П2 -->
+        <polygon points="467.5,330 463,320 472,320" class="arrow" />
+        <line x1="467.5" y1="195" x2="467.5" y2="320" class="arrow" />
+
+        <!-- Додаткові двері -->
+        <!--вихід -->
+        <line x1="480" y1="400" x2="510" y2="400" class="doors" /> 
+    </g>
+    
+    <!-- ========== Під'їзд 3 (П3) ========== -->
+    <g transform="translate(970, 50)">
+        <!-- Зовнішній контур П3 -->
+        <polygon points="
+            0,0
+            520,0
+            520,400
+            442,400
+            442,130
+            400,130
+            400,400
+            150,400
+            150,300
+            0,300
+        " class="outline" />
+        
+        <!-- Внутрішні стіни П3 -->
+        <!-- Вертикальна стіна між кімнатою 9 і коридором 5 -->
+        <line x1="150" y1="0" x2="150" y2="40" class="wall" />
+        <line x1="150" y1="90" x2="150" y2="300" class="wall" />
+        
+        <!-- Горизонтальна стіна між коридором 5 і кімнатою 10 -->
+        <line x1="150" y1="130" x2="200" y2="130" class="wall" />
+        <line x1="250" y1="130" x2="340" y2="130" class="wall" />
+
+        <!-- Горизонтальна стіна між коридором 5 і санвузлом -->
+        <line x1="380" y1="130" x2="400" y2="130" class="wall" />
+
+        <!-- Вертикальна стіна між кімнатою 10 і санвузлом 3 -->
+        <line x1="300" y1="130" x2="300" y2="400" class="wall" />
+        
+        <!-- Вертикальна стіна між коридором 5 і центральним виходом -->
+        <line x1="400" y1="0" x2="400" y2="40" class="wall" />
+        <line x1="400" y1="90" x2="400" y2="130" class="wall" />
+
+        <line x1="330" y1="0" x2="330" y2="40" class="wall" />
+        <line x1="330" y1="90" x2="330" y2="130" class="wall" />
+        
+        <!-- Горизонтальна стіна нижня санвузла 3 -->
+        <line x1="300" y1="240" x2="330" y2="240" class="wall" />
+        <line x1="370" y1="240" x2="400" y2="240" class="wall" />
+        
+        <!-- Горизонтальна стіна верхня техзони -->
+        <line x1="483" y1="180" x2="490" y2="180" class="wall" />
+        <line x1="510" y1="180" x2="520" y2="180" class="wall" />
+        
+        <!-- Горизонтальна стіна нижня техзони -->
+        <line x1="440" y1="340" x2="450" y2="340" class="wall" />
+        <line x1="480" y1="340" x2="520" y2="340" class="wall" />
+        
+        <!-- Вертикальна стіна між сходами і техприміщенням -->
+        <line x1="485" y1="180" x2="485" y2="340" class="wall" />     
+        
+        <!-- Сходи П3 -->
+        <line x1="440" y1="190" x2="485" y2="190" class="stair-step" />
+        <line x1="440" y1="200" x2="485" y2="200" class="stair-step" />
+        <line x1="440" y1="210" x2="485" y2="210" class="stair-step" />
+        <line x1="440" y1="220" x2="485" y2="220" class="stair-step" />
+        <line x1="440" y1="230" x2="485" y2="230" class="stair-step" />
+        <line x1="440" y1="240" x2="485" y2="240" class="stair-step" />
+        <line x1="440" y1="250" x2="485" y2="250" class="stair-step" />
+        <line x1="440" y1="260" x2="485" y2="260" class="stair-step" />
+        <line x1="440" y1="270" x2="485" y2="270" class="stair-step" />
+        <line x1="440" y1="280" x2="485" y2="280" class="stair-step" />
+        <line x1="440" y1="290" x2="485" y2="290" class="stair-step" />
+        <line x1="440" y1="300" x2="485" y2="300" class="stair-step" />
+        <line x1="440" y1="310" x2="485" y2="310" class="stair-step" />
+        <line x1="440" y1="320" x2="485" y2="320" class="stair-step" />
+        <line x1="440" y1="330" x2="485" y2="330" class="stair-step" />
+        
+        <!-- Стрілка П3 -->
+        <polygon points="467.5,330 463,320 472,320" class="arrow" />
+        <line x1="467.5" y1="195" x2="467.5" y2="320" class="arrow" />
+
+        <!-- Додаткові двері  -->   
+         <!--П2 в П3 -->
+        <line x1="0" y1="150" x2="0" y2="190" class="doors" />
+        <!--вихід -->
+        <line x1="480" y1="400" x2="510" y2="400" class="doors" />
+    </g>
+    
+    <!-- ========== НУМЕРАЦІЯ КІМНАТ (всі текстові підписи) ========== -->
+    <g id="room-numbers">
+        <style>
+            .room-name { font-family: Arial; font-size: 14px; font-weight: 900; fill: #666; }
+        </style>
+        
+        <!-- Під'їзд 2 (П2) -->
+        <text x="445" y="80" class="room-name">коридор 4</text>
+        <text x="445" y="360" class="room-name">Вихід 2</text>
+        <text x="705" y="270" class="room-name">кімната 7</text>
+        <text x="865" y="190" class="room-name">кімната 8</text>
+        
+        <!-- Під'їзд 3 (П3) -->
+        <text x="1005" y="190" class="room-name">кімната 9</text>
+        <text x="1165" y="80" class="room-name">коридор 5</text>
+        <text x="1165" y="270" class="room-name">кімната 10</text>
+        <text x="1275" y="220" class="room-name">санвузол 3</text>
+        <text x="1365" y="360" class="room-name">Вихід 3</text>
+        
+    </g>
+</svg>
+</body>
+</html>
