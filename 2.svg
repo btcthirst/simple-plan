@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="297mm" height="210mm" viewBox="0 0 1500 830" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <style>
@@ -32,46 +31,46 @@
         
         <!-- Унітаз -->
         <symbol id="toilet" viewBox="0 0 30 40">
-            <rect x="5" y="0" width="20" height="8" class="icon-stroke"/>
-            <path d="M 5,10 Q 0,20 0,30 L 0,38 L 30,38 L 30,30 Q 30,20 25,10 Z" class="icon-stroke"/>
+            <rect x="5" y="0" width="20" height="8" class="icon-stroke"></rect>
+            <path d="M 5,10 Q 0,20 0,30 L 0,38 L 30,38 L 30,30 Q 30,20 25,10 Z" class="icon-stroke"></path>
         </symbol>
         
         <!-- Умивальник -->
         <symbol id="sink" viewBox="0 0 30 20">
-            <rect x="2" y="2" width="26" height="16" rx="5" class="icon-stroke"/>
-            <circle cx="15" cy="10" r="2" fill="#555"/>
+            <rect x="2" y="2" width="26" height="16" rx="5" class="icon-stroke"></rect>
+            <circle cx="15" cy="10" r="2" fill="#555"></circle>
         </symbol>
 
         <!-- Електрощиток -->
         <symbol id="electrical-panel" viewBox="0 0 30 40">
-            <rect x="2" y="2" width="26" height="36" class="icon-stroke"/>
-            <polygon points="15,7 10,20 18,20 13,33" stroke="#FF0000" stroke-width="2" fill="none" />
+            <rect x="2" y="2" width="26" height="36" class="icon-stroke"></rect>
+            <polygon points="15,7 10,20 18,20 13,33" stroke="#FF0000" stroke-width="2" fill="none"></polygon>
         </symbol>
         
         <!-- Вогнегасник -->
         <symbol id="fire-extinguisher" viewBox="0 0 20 30">
-            <rect x="2" y="5" width="16" height="23" rx="3" fill="#FF0000" stroke="#000" stroke-width="1"/>
-            <rect x="6" y="2" width="8" height="5" fill="#555"/>
-            <line x1="10" y1="10" x2="18" y2="10" stroke="#000" stroke-width="2"/>
+            <rect x="2" y="5" width="16" height="23" rx="3" fill="#FF0000" stroke="#000" stroke-width="1"></rect>
+            <rect x="6" y="2" width="8" height="5" fill="#555"></rect>
+            <line x1="10" y1="10" x2="18" y2="10" stroke="#000" stroke-width="2"></line>
         </symbol>
         
         <!-- Знак "Вихід" (для легенди) -->
         <symbol id="exit-sign" viewBox="0 0 40 20">
-            <rect x="1" y="1" width="38" height="18" fill="#00AA00" stroke="#FFF" stroke-width="1"/>
+            <rect x="1" y="1" width="38" height="18" fill="#00AA00" stroke="#FFF" stroke-width="1"></rect>
             <text x="20" y="14" font-family="Arial" font-size="12px" fill="#FFF" text-anchor="middle" font-weight="bold">ВИХІД</text>
         </symbol>
         
         <!-- "Ви перебуваєте тут" -->
         <symbol id="you-are-here" viewBox="0 0 30 30">
-            <circle cx="15" cy="15" r="12" fill="red" stroke="#000" stroke-width="2"/>
+            <circle cx="15" cy="15" r="12" fill="red" stroke="#000" stroke-width="2"></circle>
         </symbol>
     </defs>
 
     <!-- ========== РАМКА ========== -->
-    <rect x="5" y="5" width="1490" height="820" class="frame" />
+    <rect x="5" y="5" width="1490" height="820" class="frame"></rect>
 
     <!-- ========== ЗАГОЛОВОК ПЛАНУ (Y=40) ========== -->
-     <rect x="580" y="0" width="340" height="45" class="title-background"/>
+     <rect x="580" y="0" width="340" height="45" class="title-background"></rect>
     <text x="750" y="20" class="plan-title">ПЛАН ЕВАКУАЦІЇ</text>
     <text x="750" y="50" class="plan-title2">з укриття на випадок надзвичайної ситуації</text>
     <text x="1230" y="640" class="legend-title">ЗАТВЕРДЖУЮ:</text>
@@ -81,7 +80,7 @@
             1470,700
             1470,800
             1220,800
-        " class="legend-frame" />
+        " class="legend-frame"></polygon>
     
     <!-- Єдина група для всього плану з початковим зміщенням (50, 50) -->
     <g transform="translate(200, 100)">
@@ -109,249 +108,248 @@
             42,400
             42,130
             0,130
-        " class="outline" />
+        " class="outline"></polygon>
         
         <!-- ========== ВНУТРІШНІ СТІНИ ТА ЕЛЕМЕНТИ (П2) ========== -->
         <g id="p2_content" transform="translate(-400, 0)">
             <!-- Вертикальна стіна між коридором і центральним виходом -->
-            <line x1="400" y1="0" x2="400" y2="40" class="wall" />
-            <line x1="400" y1="90" x2="400" y2="130" class="wall" />
+            <line x1="400" y1="0" x2="400" y2="40" class="wall"></line>
+            <line x1="400" y1="90" x2="400" y2="130" class="wall"></line>
             
             <!-- Горизонтальна стіна верхня техзони -->
-            <line x1="483" y1="180" x2="490" y2="180" class="wall" />
-            <line x1="510" y1="180" x2="520" y2="180" class="wall" />
+            <line x1="483" y1="180" x2="490" y2="180" class="wall"></line>
+            <line x1="510" y1="180" x2="520" y2="180" class="wall"></line>
             
             <!-- Горизонтальна стіна нижня техзони -->
-            <line x1="440" y1="340" x2="450" y2="340" class="wall" />
-            <line x1="480" y1="340" x2="520" y2="340" class="wall" />
+            <line x1="440" y1="340" x2="450" y2="340" class="wall"></line>
+            <line x1="480" y1="340" x2="520" y2="340" class="wall"></line>
             
             <!-- Вертикальна стіна між сходами і техприміщенням -->
-            <line x1="485" y1="180" x2="485" y2="340" class="wall" />
+            <line x1="485" y1="180" x2="485" y2="340" class="wall"></line>
             
             <!-- Вертикальна стіна між виходом і коридором 4 -->
-            <line x1="520" y1="0" x2="520" y2="40" class="wall" />
-            <line x1="520" y1="90" x2="520" y2="130" class="wall" />
+            <line x1="520" y1="0" x2="520" y2="40" class="wall"></line>
+            <line x1="520" y1="90" x2="520" y2="130" class="wall"></line>
             
             <!-- Вертикальна стіна між кімнатою 7 і кімнатою 8 (Спільна внутрішня стіна) -->
-            <line x1="770" y1="0" x2="770" y2="150" class="wall" />
-            <line x1="770" y1="190" x2="770" y2="300" class="wall" />
+            <line x1="770" y1="0" x2="770" y2="150" class="wall"></line>
+            <line x1="770" y1="190" x2="770" y2="300" class="wall"></line>
             
             <!-- Вертикальна стіна між коридором 4 і виходом -->
-            <line x1="590" y1="0" x2="590" y2="40" class="wall" />
-            <line x1="590" y1="90" x2="590" y2="130" class="wall" />
+            <line x1="590" y1="0" x2="590" y2="40" class="wall"></line>
+            <line x1="590" y1="90" x2="590" y2="130" class="wall"></line>
             
             <!-- Горизонтальна стіна між коридором 4 і кімнатою 7 - РОЗДІЛЕНА НА 3 СЕГМЕНТИ + ДВЕРІ -->
-            <line x1="620" y1="130" x2="640" y2="130" class="wall" />
-            <line x1="640" y1="130" x2="700" y2="130" class="doors" /> <!-- Door K7 - K4 -->
-            <line x1="700" y1="130" x2="770" y2="130" class="wall" />
+            <line x1="620" y1="130" x2="640" y2="130" class="wall"></line>
+            <line x1="640" y1="130" x2="700" y2="130" class="doors"></line> <!-- Door K7 - K4 -->
+            <line x1="700" y1="130" x2="770" y2="130" class="wall"></line>
             
             <!-- Сходи П2 -->
-            <line x1="440" y1="190" x2="485" y2="190" class="stair-step" />
-            <line x1="440" y1="200" x2="485" y2="200" class="stair-step" />
-            <line x1="440" y1="210" x2="485" y2="210" class="stair-step" />
-            <line x1="440" y1="220" x2="485" y2="220" class="stair-step" />
-            <line x1="440" y1="230" x2="485" y2="230" class="stair-step" />
-            <line x1="440" y1="240" x2="485" y2="240" class="stair-step" />
-            <line x1="440" y1="250" x2="485" y2="250" class="stair-step" />
-            <line x1="440" y1="260" x2="485" y2="260" class="stair-step" />
-            <line x1="440" y1="270" x2="485" y2="270" class="stair-step" />
-            <line x1="440" y1="280" x2="485" y2="280" class="stair-step" />
-            <line x1="440" y1="290" x2="485" y2="290" class="stair-step" />
-            <line x1="440" y1="300" x2="485" y2="300" class="stair-step" />
-            <line x1="440" y1="310" x2="485" y2="310" class="stair-step" />
-            <line x1="440" y1="320" x2="485" y2="320" class="stair-step" />
-            <line x1="440" y1="330" x2="485" y2="330" class="stair-step" />
+            <line x1="440" y1="190" x2="485" y2="190" class="stair-step"></line>
+            <line x1="440" y1="200" x2="485" y2="200" class="stair-step"></line>
+            <line x1="440" y1="210" x2="485" y2="210" class="stair-step"></line>
+            <line x1="440" y1="220" x2="485" y2="220" class="stair-step"></line>
+            <line x1="440" y1="230" x2="485" y2="230" class="stair-step"></line>
+            <line x1="440" y1="240" x2="485" y2="240" class="stair-step"></line>
+            <line x1="440" y1="250" x2="485" y2="250" class="stair-step"></line>
+            <line x1="440" y1="260" x2="485" y2="260" class="stair-step"></line>
+            <line x1="440" y1="270" x2="485" y2="270" class="stair-step"></line>
+            <line x1="440" y1="280" x2="485" y2="280" class="stair-step"></line>
+            <line x1="440" y1="290" x2="485" y2="290" class="stair-step"></line>
+            <line x1="440" y1="300" x2="485" y2="300" class="stair-step"></line>
+            <line x1="440" y1="310" x2="485" y2="310" class="stair-step"></line>
+            <line x1="440" y1="320" x2="485" y2="320" class="stair-step"></line>
+            <line x1="440" y1="330" x2="485" y2="330" class="stair-step"></line>
             
             <!-- Стрілка Сходи П2 (напрямок) -->
-            <polygon points="467.5,330 463,320 472,320" class="arrow" />
-            <line x1="467.5" y1="195" x2="467.5" y2="320" class="arrow" />
+            <polygon points="467.5,330 463,320 472,320" class="arrow"></polygon>
+            <line x1="467.5" y1="195" x2="467.5" y2="320" class="arrow"></line>
     
             <!-- Додаткові двері -->
             <!--вихід -->
-            <line x1="480" y1="400" x2="510" y2="400" class="doors" /> 
+            <line x1="480" y1="400" x2="510" y2="400" class="doors"></line> 
 
             <!-- ========== Стрілки евакуації П2 ========== -->
             <g id="escape_routes_p2">
-                <!-- Кімната 8 -> Кімната 7 (праворуч до дверей) -->
-                <line x1="860" y1="170" x2="800" y2="170" class="escape-route-line" />
-                <polygon points="800,170 810,166 810,174" class="escape-route" />
+                <!-- Кімната 8 -&gt; Кімната 7 (праворуч до дверей) -->
+                <line x1="860" y1="170" x2="800" y2="170" class="escape-route-line"></line>
+                <polygon points="800,170 810,166 810,174" class="escape-route"></polygon>
                 
-                <!-- Кімната 7 -> Коридор 4 (вгору до дверей) -->
-                <line x1="670" y1="250" x2="670" y2="140" class="escape-route-line" />
-                <polygon points="670,130 666,140 674,140" class="escape-route" />
+                <!-- Кімната 7 -&gt; Коридор 4 (вгору до дверей) -->
+                <line x1="670" y1="250" x2="670" y2="140" class="escape-route-line"></line>
+                <polygon points="670,130 666,140 674,140" class="escape-route"></polygon>
 
                 <!-- Коридор 4 (ліворуч до сходів) -->
-                <line x1="670" y1="65" x2="485" y2="65" class="escape-route-line" />
-                <polygon points="475,65 485,61 485,69" class="escape-route" />
+                <line x1="670" y1="65" x2="485" y2="65" class="escape-route-line"></line>
+                <polygon points="475,65 485,61 485,69" class="escape-route"></polygon>
 
-                <!-- Коридор 4 -> Вихід 2 (вниз) -->
-                <line x1="475" y1="85" x2="475" y2="380" class="escape-route-line" />
-                <polygon points="475,390 471,380 479,380" class="escape-route" />
+                <!-- Коридор 4 -&gt; Вихід 2 (вниз) -->
+                <line x1="475" y1="85" x2="475" y2="380" class="escape-route-line"></line>
+                <polygon points="475,390 471,380 479,380" class="escape-route"></polygon>
             </g>
 
                 <!-- ========== ЕЛЕМЕНТИ ========== -->
             <!-- Сантехніка в "санвузол"  -->
-            <use href="#toilet" x="1280" y="220" width="30" height="40" />
-            <use href="#sink" x="1230" y="280" width="30" height="20" />
+            <use href="#toilet" x="1230" y="220" width="30" height="40"></use>
+            <use href="#sink" x="1280" y="280" width="30" height="20"></use>
             
             <!-- Електрощиток вихід 1 -->
-            <use href="#electrical-panel" x="470" y="0" width="20" height="30" />
-            <use href="#electrical-panel" x="490" y="0" width="20" height="30" />
+            <use href="#electrical-panel" x="470" y="0" width="20" height="30"></use>
+            <use href="#electrical-panel" x="490" y="0" width="20" height="30"></use>
             
             
             
             <!-- Вихід 1 -->
-            <use href="#exit-sign" x="465" y="410" width="40" height="20" />
-            <use href="#exit-sign" x="1385" y="410" width="40" height="20" />
+            <use href="#exit-sign" x="465" y="410" width="40" height="20"></use>
+            <use href="#exit-sign" x="1385" y="410" width="40" height="20"></use>
         </g>
     
         <!-- ========== ВНУТРІШНІ СТІНИ ТА ЕЛЕМЕНТИ (П3) ========== -->
         <g id="p3_content" transform="translate(520, 0)"> 
             <!-- Вертикальна стіна між кімнатою 9 і коридором 5 -->
-            <line x1="150" y1="0" x2="150" y2="40" class="wall" />
-            <line x1="150" y1="90" x2="150" y2="300" class="wall" />
+            <line x1="150" y1="0" x2="150" y2="40" class="wall"></line>
+            <line x1="150" y1="90" x2="150" y2="300" class="wall"></line>
             
             <!-- Горизонтальна стіна між коридором 5 і кімнатою 10 -->
-            <line x1="150" y1="130" x2="200" y2="130" class="wall" />
-            <line x1="250" y1="130" x2="340" y2="130" class="wall" />
+            <line x1="150" y1="130" x2="200" y2="130" class="wall"></line>
+            <line x1="250" y1="130" x2="340" y2="130" class="wall"></line>
     
             <!-- Горизонтальна стіна між коридором 5 і санвузлом -->
-            <line x1="380" y1="130" x2="400" y2="130" class="wall" />
+            <line x1="380" y1="130" x2="400" y2="130" class="wall"></line>
     
             <!-- Вертикальна стіна між кімнатою 10 і санвузлом 3 (Тепер суцільна) -->
-            <line x1="300" y1="130" x2="300" y2="400" class="wall" />
+            <line x1="300" y1="130" x2="300" y2="400" class="wall"></line>
             
             <!-- Вертикальна стіна між коридором 5 і центральним виходом -->
-            <line x1="400" y1="0" x2="400" y2="40" class="wall" />
-            <line x1="400" y1="90" x2="400" y2="130" class="wall" />
+            <line x1="400" y1="0" x2="400" y2="40" class="wall"></line>
+            <line x1="400" y1="90" x2="400" y2="130" class="wall"></line>
     
-            <line x1="330" y1="0" x2="330" y2="40" class="wall" />
-            <line x1="330" y1="90" x2="330" y2="130" class="wall" />
+            <line x1="330" y1="0" x2="330" y2="40" class="wall"></line>
+            <line x1="330" y1="90" x2="330" y2="130" class="wall"></line>
             
             <!-- Горизонтальна стіна нижня санвузла 3 (Зсунута до y=190) -->
-            <line x1="300" y1="190" x2="330" y2="190" class="wall" />
-            <line x1="370" y1="190" x2="400" y2="190" class="wall" />
+            <line x1="300" y1="190" x2="350" y2="190" class="wall"></line>
+            <line x1="380" y1="190" x2="400" y2="190" class="wall"></line>
             
             <!-- Горизонтальна стіна верхня техзони -->
-            <line x1="483" y1="180" x2="490" y2="180" class="wall" />
-            <line x1="510" y1="180" x2="520" y2="180" class="wall" />
+            <line x1="483" y1="180" x2="490" y2="180" class="wall"></line>
+            <line x1="510" y1="180" x2="520" y2="180" class="wall"></line>
             
             <!-- Горизонтальна стіна нижня техзони -->
-            <line x1="440" y1="340" x2="450" y2="340" class="wall" />
-            <line x1="480" y1="340" x2="520" y2="340" class="wall" />
+            <line x1="440" y1="340" x2="450" y2="340" class="wall"></line>
+            <line x1="480" y1="340" x2="520" y2="340" class="wall"></line>
             
             <!-- Вертикальна стіна між сходами і техприміщенням -->
-            <line x1="485" y1="180" x2="485" y2="340" class="wall" />     
+            <line x1="485" y1="180" x2="485" y2="340" class="wall"></line>     
             
             <!-- Сходи П3 -->
-            <line x1="440" y1="190" x2="485" y2="190" class="stair-step" />
-            <line x1="440" y1="200" x2="485" y2="200" class="stair-step" />
-            <line x1="440" y1="210" x2="485" y2="210" class="stair-step" />
-            <line x1="440" y1="220" x2="485" y2="220" class="stair-step" />
-            <line x1="440" y1="230" x2="485" y2="230" class="stair-step" />
-            <line x1="440" y1="240" x2="485" y2="240" class="stair-step" />
-            <line x1="440" y1="250" x2="485" y2="250" class="stair-step" />
-            <line x1="440" y1="260" x2="485" y2="260" class="stair-step" />
-            <line x1="440" y1="270" x2="485" y2="270" class="stair-step" />
-            <line x1="440" y1="280" x2="485" y2="280" class="stair-step" />
-            <line x1="440" y1="290" x2="485" y2="290" class="stair-step" />
-            <line x1="440" y1="300" x2="485" y2="300" class="stair-step" />
-            <line x1="440" y1="310" x2="485" y2="310" class="stair-step" />
-            <line x1="440" y1="320" x2="485" y2="320" class="stair-step" />
-            <line x1="440" y1="330" x2="485" y2="330" class="stair-step" />
+            <line x1="440" y1="190" x2="485" y2="190" class="stair-step"></line>
+            <line x1="440" y1="200" x2="485" y2="200" class="stair-step"></line>
+            <line x1="440" y1="210" x2="485" y2="210" class="stair-step"></line>
+            <line x1="440" y1="220" x2="485" y2="220" class="stair-step"></line>
+            <line x1="440" y1="230" x2="485" y2="230" class="stair-step"></line>
+            <line x1="440" y1="240" x2="485" y2="240" class="stair-step"></line>
+            <line x1="440" y1="250" x2="485" y2="250" class="stair-step"></line>
+            <line x1="440" y1="260" x2="485" y2="260" class="stair-step"></line>
+            <line x1="440" y1="270" x2="485" y2="270" class="stair-step"></line>
+            <line x1="440" y1="280" x2="485" y2="280" class="stair-step"></line>
+            <line x1="440" y1="290" x2="485" y2="290" class="stair-step"></line>
+            <line x1="440" y1="300" x2="485" y2="300" class="stair-step"></line>
+            <line x1="440" y1="310" x2="485" y2="310" class="stair-step"></line>
+            <line x1="440" y1="320" x2="485" y2="320" class="stair-step"></line>
+            <line x1="440" y1="330" x2="485" y2="330" class="stair-step"></line>
             
             <!-- Стрілка Сходи П3 (напрямок) -->
-            <polygon points="467.5,330 463,320 472,320" class="arrow" />
-            <line x1="467.5" y1="195" x2="467.5" y2="320" class="arrow" />
+            <polygon points="467.5,330 463,320 472,320" class="arrow"></polygon>
+            <line x1="467.5" y1="195" x2="467.5" y2="320" class="arrow"></line>
 
             <!-- Додаткові двері  -->
             <!--П2 в П3 -->
-            <line x1="0" y1="150" x2="0" y2="190" class="doors" />
+            <line x1="0" y1="150" x2="0" y2="190" class="doors"></line>
             <!--вихід -->
-            <line x1="480" y1="400" x2="510" y2="400" class="doors" />
+            <line x1="480" y1="400" x2="510" y2="400" class="doors"></line>
 
             <!-- ========== Стрілки евакуації П3 ========== -->
             <g id="escape_routes_p3">
-                <!-- Кімната 9 -> Коридор 5 (праворуч до дверей) -->
-                <line x1="80" y1="70" x2="140" y2="70" class="escape-route-line" />
-                <polygon points="150,70 140,66 140,74" class="escape-route" />
+                <!-- Кімната 9 -&gt; Коридор 5 (праворуч до дверей) -->
+                <line x1="80" y1="70" x2="140" y2="70" class="escape-route-line"></line>
+                <polygon points="150,70 140,66 140,74" class="escape-route"></polygon>
             
                 
-                <!-- Кімната 10 -> Коридор 5 (вгору до дверей) -->
-                <line x1="225" y1="270" x2="225" y2="140" class="escape-route-line" />
-                <polygon points="225,130 221,140 229,140" class="escape-route" />
+                <!-- Кімната 10 -&gt; Коридор 5 (вгору до дверей) -->
+                <line x1="225" y1="270" x2="225" y2="140" class="escape-route-line"></line>
+                <polygon points="225,130 221,140 229,140" class="escape-route"></polygon>
 
                 <!-- Коридор 5 (праворуч до сходів) -->
-                <line x1="225" y1="65" x2="455" y2="65" class="escape-route-line" />
-                <polygon points="465,65 455,61 455,69" class="escape-route" />
+                <line x1="225" y1="65" x2="455" y2="65" class="escape-route-line"></line>
+                <polygon points="465,65 455,61 455,69" class="escape-route"></polygon>
 
-                <!-- Коридор 5 -> Вихід 3 (вниз) -->
-                <line x1="475" y1="85" x2="475" y2="380" class="escape-route-line" />
-                <polygon points="475,390 471,380 479,380" class="escape-route" />
+                <!-- Коридор 5 -&gt; Вихід 3 (вниз) -->
+                <line x1="475" y1="85" x2="475" y2="380" class="escape-route-line"></line>
+                <polygon points="475,390 471,380 479,380" class="escape-route"></polygon>
                 
-                <!-- Санвузол -> Коридор 5 -->
-                <line x1="350" y1="160" x2="350" y2="100" class="escape-route-line" />
-                <polygon points="350,90 346,100 354,100" class="escape-route" />
+                <!-- Санвузол -&gt; Коридор 5 -->
+                <line x1="350" y1="160" x2="350" y2="100" class="escape-route-line"></line>
+                <polygon points="350,90 346,100 354,100" class="escape-route"></polygon>
             </g>
             <!-- Вогнегасник в коридорі 1 -->
-            <use href="#fire-extinguisher" x="490" y="250" width="20" height="30" />
+            <use href="#fire-extinguisher" x="490" y="250" width="20" height="30"></use>
         </g>
 
         <!-- Спільна внутрішня стіна (з'єднує П2 та П3) -->
-        <line x1="520" y1="0" x2="520" y2="300" class="wall" /> 
+        <line x1="520" y1="0" x2="520" y2="300" class="wall"></line> 
 
         <!-- Двері між П2 і П3. -->
-        <line x1="520" y1="150" x2="520" y2="190" class="doors" />
+        <line x1="520" y1="150" x2="520" y2="190" class="doors"></line>
         
         <!-- ========== НУМЕРАЦІЯ КІМНАТ (скориговані координати) ========== -->
         <g id="room-numbers">
             <!-- Під'їзд 2 (П2): X-координати скориговані на -400 -->
-            <text x="205" y="80" class="room-name">коридор 4</text>
-            <text x="45" y="360" class="room-name">Вихід 2</text>
-            <text x="250" y="270" class="room-name">кімната 7</text>
-            <text x="405" y="230" class="room-name">кімната 8</text>
+            <text x="205" y="80" class="room-name">коридор 2</text>
+            <text x="125" y="360" class="room-name">Вихід 2</text>
+            <text x="250" y="270" class="room-name">кімната 4</text>
+            <text x="405" y="230" class="room-name">кімната 3</text>
             
             <!-- Під'їзд 3 (П3): X-координати скориговані на +520 (970 - 450) -->
-            <text x="580" y="230" class="room-name">кімната 9</text>
-            <text x="740" y="80" class="room-name">коридор 5</text>
-            <text x="740" y="270" class="room-name">кімната 10</text>
-            <text x="850" y="160" class="room-name">санвузол 3</text>
-            <text x="940" y="360" class="room-name">Вихід 3</text>
+            <text x="580" y="230" class="room-name">кімната 2</text>
+            <text x="740" y="80" class="room-name">коридор 1</text>
+            <text x="740" y="270" class="room-name">кімната 1</text>
+            <text x="850" y="170" class="room-name">санвузол </text>
+            <text x="900" y="360" class="room-name">Вихід 3</text>
             
         </g>
     </g>
 
     <!-- ========== ЛЕГЕНДА (УМОВНІ ПОЗНАЧЕННЯ) (Зміщено Y до 485) ========== -->
     <g id="legend" transform="translate(50, 660)">
-        <rect x="-20" y="20" width="700" height="120" class="legend-frame" />
-        <rect x="-10" y="0" width="225" height="25" class="title-background" />
+        <rect x="-20" y="20" width="700" height="120" class="legend-frame"></rect>
+        <rect x="-10" y="0" width="225" height="25" class="title-background"></rect>
         <text x="0" y="25" class="legend-title">УМОВНІ ПОЗНАЧЕННЯ:</text>
         
         <!-- Колонка 1 -->
-        <line x1="20" y1="50" x2="50" y2="50" class="escape-route-line" />
-        <polygon points="60,50 50,46 50,54" class="escape-route" />
+        <line x1="20" y1="50" x2="50" y2="50" class="escape-route-line"></line>
+        <polygon points="60,50 50,46 50,54" class="escape-route"></polygon>
         <text x="80" y="55" class="legend-text">Напрямок евакуації</text>
         
-        <use href="#you-are-here" x="25" y="75" width="20" height="20" />
+        <use href="#you-are-here" x="25" y="75" width="20" height="20"></use>
         <text x="80" y="90" class="legend-text">Ви перебуваєте тут</text>
         
-        <use href="#exit-sign" x="15" y="110" width="40" height="20" />
+        <use href="#exit-sign" x="15" y="110" width="40" height="20"></use>
         <text x="80" y="125" class="legend-text">Евакуаційний вихід</text>
         
         <!-- Колонка 2 -->
-        <use href="#electrical-panel" x="300" y="40" width="20" height="30" />
+        <use href="#electrical-panel" x="300" y="40" width="20" height="30"></use>
         <text x="340" y="55" class="legend-text">Електрощиток</text>
         
-        <use href="#fire-extinguisher" x="300" y="80" width="20" height="30" />
+        <use href="#fire-extinguisher" x="300" y="80" width="20" height="30"></use>
         <text x="340" y="95" class="legend-text">Вогнегасник</text>
         
         <!-- Колонка 3 -->
-        <use href="#toilet" x="500" y="30" width="20" height="30" />
+        <use href="#toilet" x="500" y="30" width="20" height="30"></use>
         <text x="540" y="45" class="legend-text">Унітаз</text>
         
-        <use href="#sink" x="500" y="70" width="25" height="20" />
+        <use href="#sink" x="500" y="70" width="25" height="20"></use>
         <text x="540" y="85" class="legend-text">Умивальник</text>
         
     </g>
 </svg>
-
