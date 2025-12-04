@@ -3,9 +3,14 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"image"
+	"image/png"
 	"io"
 	"os"
+	"os/exec"
 
+	"github.com/srwiley/oksvg"
+	"github.com/srwiley/rasterx"
 	"golang.org/x/net/html"
 )
 
@@ -38,9 +43,10 @@ const exampleHTMLContent = `
 
 const (
 	// 1. Визначаємо ім'я вхідного файлу
-	inputFilename = "plan2.html"
+	inputFilename = "mirror.html" //"full.html" //"plan2.html" //"plan1.html"
 	// 1. Визначаємо ім'я вихідного файлу
-	targetSVGFilename = "2.svg"
+	targetSVGFilename = "mirror.svg" //"full.svg" //"2.svg" //"1.svg"
+	targetPNGFilename = "mirror.png" //"full.png" //"2.png" //"1.png"
 )
 
 // ensureFileExists перевіряє, чи існує файл, і якщо ні, створює його з прикладом вмісту.
@@ -124,14 +130,13 @@ func extractAndSaveSVG(doc *html.Node, outputFilename string) error {
 		return fmt.Errorf("Не вдалося знайти тег <svg> у HTML-документі")
 	}
 
-	// 1. Серіалізуємо SVG-вузол
-	// html.Render приймає io.Writer і вузол, і записує повний HTML/XML цього вузла.
+	// Серіалізуємо SVG-вузол з правильним форматуванням для SVG
 	var buf bytes.Buffer
-	if err := html.Render(&buf, svgNode); err != nil {
+	if err := renderSVG(&buf, svgNode); err != nil {
 		return fmt.Errorf("Помилка рендерингу SVG-вузла: %v", err)
 	}
 
-	// 2. Зберігаємо серіалізований вміст у файл
+	// Зберігаємо серіалізований вміст у файл
 	err := os.WriteFile(outputFilename, buf.Bytes(), 0644)
 	if err != nil {
 		return fmt.Errorf("Помилка запису файлу %s: %v", outputFilename, err)
@@ -139,6 +144,85 @@ func extractAndSaveSVG(doc *html.Node, outputFilename string) error {
 
 	fmt.Printf("\n--> Успішно витягнуто та збережено SVG у файл: %s\n", outputFilename)
 	return nil
+}
+
+// renderSVG рендерить SVG-вузол у правильному форматі XML з самозакриваючими тегами
+func renderSVG(w io.Writer, n *html.Node) error {
+	// Список SVG елементів, які повинні бути самозакриваючими
+	selfClosingTags := map[string]bool{
+		"circle": true, "ellipse": true, "line": true, "path": true,
+		"polygon": true, "polyline": true, "rect": true, "use": true,
+		"image": true, "stop": true, "animate": true, "animateMotion": true,
+		"animateTransform": true, "set": true,
+	}
+
+	var render func(*html.Node, int) error
+	render = func(n *html.Node, depth int) error {
+		indent := ""
+		for i := 0; i < depth; i++ {
+			indent += "    "
+		}
+
+		switch n.Type {
+		case html.ElementNode:
+			// Відкриваючий тег
+			fmt.Fprintf(w, "%s<%s", indent, n.Data)
+
+			// Атрибути
+			for _, attr := range n.Attr {
+				fmt.Fprintf(w, " %s=\"%s\"", attr.Key, attr.Val)
+			}
+
+			// Перевірка чи є дочірні елементи
+			hasChildren := n.FirstChild != nil
+
+			// Якщо це самозакриваючий тег і немає дітей
+			if selfClosingTags[n.Data] && !hasChildren {
+				fmt.Fprintf(w, " />\n")
+			} else if !hasChildren && n.Data != "svg" && n.Data != "g" && n.Data != "defs" && n.Data != "style" && n.Data != "text" {
+				// Інші порожні елементи (крім контейнерів)
+				fmt.Fprintf(w, " />\n")
+			} else {
+				fmt.Fprintf(w, ">")
+
+				// Якщо це текстовий контейнер, не додаємо новий рядок
+				if n.Data == "text" || n.Data == "style" {
+					// Рендеримо дітей без відступів
+					for c := n.FirstChild; c != nil; c = c.NextSibling {
+						if c.Type == html.TextNode {
+							fmt.Fprint(w, c.Data)
+						} else {
+							render(c, 0)
+						}
+					}
+					fmt.Fprintf(w, "</%s>\n", n.Data)
+				} else {
+					fmt.Fprint(w, "\n")
+					// Рендеримо дочірні елементи
+					for c := n.FirstChild; c != nil; c = c.NextSibling {
+						if err := render(c, depth+1); err != nil {
+							return err
+						}
+					}
+					fmt.Fprintf(w, "%s</%s>\n", indent, n.Data)
+				}
+			}
+
+		case html.TextNode:
+			// Пропускаємо порожні текстові вузли (пробіли між тегами)
+			trimmed := bytes.TrimSpace([]byte(n.Data))
+			if len(trimmed) > 0 {
+				fmt.Fprintf(w, "%s%s\n", indent, n.Data)
+			}
+
+		case html.CommentNode:
+			fmt.Fprintf(w, "%s<!-- %s -->\n", indent, n.Data)
+		}
+
+		return nil
+	}
+
+	return render(n, 0)
 }
 
 // findTag рекурсивно шукає вузол із заданим ім'ям тега і повертає його текстовий вміст.
@@ -198,5 +282,234 @@ func main() {
 	// 5. Витягуємо SVG і зберігаємо його
 	if err := extractAndSaveSVG(doc, targetSVGFilename); err != nil {
 		fmt.Printf("Помилка витягнення SVG: %v\n", err)
+		return
 	}
+
+	// 6. Конвертуємо SVG в PNG
+	if err := convertSVGToPNG(targetSVGFilename, targetPNGFilename, 2450, 830); err != nil {
+		fmt.Printf("Помилка конвертації SVG в PNG: %v\n", err)
+		return
+	}
+}
+
+// convertSVGToPNG конвертує SVG файл у PNG з заданими розмірами
+// Використовує rsvg-convert для кращої підтримки всіх SVG можливостей
+func convertSVGToPNG(svgFilename, pngFilename string, width, height int) error {
+	// Перевіряємо чи встановлений rsvg-convert
+	_, err := exec.LookPath("rsvg-convert")
+	if err != nil {
+		// Якщо rsvg-convert не встановлено, пробуємо використати oksvg
+		return convertSVGToPNGWithOksvg(svgFilename, pngFilename, width, height)
+	}
+
+	// Для PNG створюємо SVG БЕЗ дзеркального відображення, читаючи з HTML
+	// Читаємо оригінальний HTML файл
+	htmlFile := inputFilename
+	htmlData, err := os.ReadFile(htmlFile)
+	if err != nil {
+		return fmt.Errorf("помилка читання HTML: %v", err)
+	}
+
+	// Парсимо HTML і витягуємо SVG
+	doc, err := html.Parse(bytes.NewReader(htmlData))
+	if err != nil {
+		return fmt.Errorf("помилка парсингу HTML: %v", err)
+	}
+
+	// Знаходимо SVG вузол
+	var svgNode *html.Node
+	var findSVG func(*html.Node)
+	findSVG = func(n *html.Node) {
+		if n.Type == html.ElementNode && n.Data == "svg" {
+			svgNode = n
+			return
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			if svgNode != nil {
+				return
+			}
+			findSVG(c)
+		}
+	}
+	findSVG(doc)
+
+	if svgNode == nil {
+		return fmt.Errorf("не знайдено SVG у HTML")
+	}
+
+	// Серіалізуємо SVG без трансформацій
+	var buf bytes.Buffer
+	if err := renderSVG(&buf, svgNode); err != nil {
+		return fmt.Errorf("помилка рендерингу SVG: %v", err)
+	}
+
+	// Видаляємо дзеркальні трансформації для нормального PNG
+	cleanSVG := replaceTransform(buf.String())
+
+	// Зберігаємо у тимчасовий файл
+	tempSVG := "temp_for_png.svg"
+	if err := os.WriteFile(tempSVG, []byte(cleanSVG), 0644); err != nil {
+		return fmt.Errorf("помилка створення тимчасового SVG: %v", err)
+	}
+	defer os.Remove(tempSVG)
+
+	// Використовуємо rsvg-convert з білим фоном
+	cmd := exec.Command("rsvg-convert",
+		"-w", fmt.Sprintf("%d", width),
+		"-b", "white",
+		"--keep-aspect-ratio",
+		"-o", pngFilename,
+		tempSVG)
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("помилка конвертації через rsvg-convert: %v\nВивід: %s", err, string(output))
+	}
+
+	fmt.Printf("\n--> Успішно створено PNG файл через rsvg-convert: %s (розмір: %dx%d)\n", pngFilename, width, height)
+	return nil
+}
+
+// flipPNGFile читає PNG, дзеркально відображає його та зберігає назад
+func flipPNGFile(filename string) error {
+	// Читаємо PNG
+	file, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
+	img, err := png.Decode(file)
+	file.Close()
+	if err != nil {
+		return err
+	}
+
+	// Конвертуємо в RGBA якщо потрібно
+	bounds := img.Bounds()
+	rgba := image.NewRGBA(bounds)
+	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+		for x := bounds.Min.X; x < bounds.Max.X; x++ {
+			rgba.Set(x, y, img.At(x, y))
+		}
+	}
+
+	// Дзеркально відображаємо
+	flipped := flipHorizontal(rgba)
+
+	// Зберігаємо назад
+	outFile, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	return png.Encode(outFile, flipped)
+}
+
+// convertSVGToPNGWithOksvg - запасний метод конвертації через oksvg (обмежена підтримка)
+func convertSVGToPNGWithOksvg(svgFilename, pngFilename string, width, height int) error {
+	fmt.Println("УВАГА: rsvg-convert не встановлено. Використовується oksvg (обмежена підтримка тексту)")
+	fmt.Println("Для кращої якості встановіть: sudo apt-get install librsvg2-bin")
+
+	// Читаємо SVG файл
+	svgData, err := os.ReadFile(svgFilename)
+	if err != nil {
+		return fmt.Errorf("помилка читання SVG файлу: %v", err)
+	}
+
+	// Видаляємо трансформації, які oksvg не підтримує
+	svgString := string(svgData)
+	svgString = replaceTransform(svgString)
+
+	// Перевіряємо, чи потрібно дзеркально відобразити
+	needsFlip := bytes.Contains(svgData, []byte(`transform="scale(-1, 1)"`))
+
+	// Парсимо SVG
+	icon, err := oksvg.ReadIconStream(bytes.NewReader([]byte(svgString)))
+	if err != nil {
+		return fmt.Errorf("помилка парсингу SVG: %v", err)
+	}
+
+	// Встановлюємо розміри
+	icon.SetTarget(0, 0, float64(width), float64(height))
+
+	// Створюємо зображення з білим фоном
+	img := image.NewRGBA(image.Rect(0, 0, width, height))
+
+	// Заповнюємо білим фоном
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			img.Set(x, y, image.White)
+		}
+	}
+
+	// Рендеримо SVG
+	scanner := rasterx.NewScannerGV(width, height, img, img.Bounds())
+	raster := rasterx.NewDasher(width, height, scanner)
+	icon.Draw(raster, 1.0)
+
+	// Дзеркально відображаємо якщо потрібно
+	var finalImg image.Image = img
+	if needsFlip {
+		finalImg = flipHorizontal(img)
+	}
+
+	// Зберігаємо PNG
+	outFile, err := os.Create(pngFilename)
+	if err != nil {
+		return fmt.Errorf("помилка створення PNG файлу: %v", err)
+	}
+	defer outFile.Close()
+
+	if err := png.Encode(outFile, finalImg); err != nil {
+		return fmt.Errorf("помилка кодування PNG: %v", err)
+	}
+
+	fmt.Printf("\n--> Створено PNG файл через oksvg: %s (можливо без тексту)\n", pngFilename)
+	return nil
+}
+
+// flipHorizontal дзеркально відображає зображення по горизонталі
+func flipHorizontal(src *image.RGBA) *image.RGBA {
+	bounds := src.Bounds()
+	width := bounds.Dx()
+	height := bounds.Dy()
+
+	flipped := image.NewRGBA(bounds)
+
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			flipped.Set(width-1-x, y, src.At(x, y))
+		}
+	}
+
+	return flipped
+}
+
+// replaceTransform видаляє атрибут transform зі SVG тега та CSS трансформації з текстових стилів
+func replaceTransform(svgString string) string {
+	result := svgString
+
+	// 1. Видаляємо transform="scale(-1, 1)" з головного SVG тегу
+	result = string(bytes.ReplaceAll([]byte(result), []byte(`transform="scale(-1, 1)"`), []byte("")))
+
+	// 2. Видаляємо style="transform-origin: center;" з головного SVG тегу
+	result = string(bytes.ReplaceAll([]byte(result), []byte(`style="transform-origin: center;"`), []byte("")))
+
+	// 3. Видаляємо CSS трансформації з текстових стилів (незалежно від відступів)
+	// Видаляємо цілі рядки з цими властивостями
+	lines := bytes.Split([]byte(result), []byte("\n"))
+	var cleanedLines [][]byte
+
+	for _, line := range lines {
+		lineStr := string(bytes.TrimSpace(line))
+		// Пропускаємо рядки з CSS трансформаціями
+		if lineStr == "transform: scale(-1, 1);" ||
+			lineStr == "transform-box: fill-box;" ||
+			lineStr == "transform-origin: center;" {
+			continue
+		}
+		cleanedLines = append(cleanedLines, line)
+	}
+
+	return string(bytes.Join(cleanedLines, []byte("\n")))
 }
